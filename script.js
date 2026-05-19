@@ -119,7 +119,7 @@ function getLearnerData(course, ag, submissions) {
 
       assignmentMap[assignment.id] = assignment;
     }
-// ================================
+    // ================================
     // LOOP TYPE 2: for...of (submissions)
     // ================================
     for (let sub of submissions) {
@@ -158,7 +158,7 @@ function getLearnerData(course, ag, submissions) {
 
       score = Math.max(0, score);
 
-            // create learner object if missing
+      // create learner object if missing
       if (!learners[learnerId]) {
         learners[learnerId] = {
           id: learnerId,
@@ -166,6 +166,12 @@ function getLearnerData(course, ag, submissions) {
           totalPoints: 0
         };
       }
+      
+      learners[learnerId][assignment.id] =
+        +(score / assignment.points_possible).toFixed(3);
+
+      learners[learnerId].totalScore += score;
+      learners[learnerId].totalPoints += assignment.points_possible;
 
     }
 
