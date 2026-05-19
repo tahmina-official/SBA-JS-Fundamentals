@@ -119,7 +119,18 @@ function getLearnerData(course, ag, submissions) {
 
       assignmentMap[assignment.id] = assignment;
     }
+// ================================
+    // LOOP TYPE 2: for...of (submissions)
+    // ================================
+    for (let sub of submissions) {
+      const assignment = assignmentMap[sub.assignment_id];
 
+      // IF / ELSE control flow
+      if (!assignment) {
+        continue; // LOOP CONTROL (REQ: continue)
+      } else {
+        hasValidData = true;
+      }
 
   } catch (error) {
     console.log("Error:", error.message);
