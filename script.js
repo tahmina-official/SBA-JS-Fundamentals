@@ -82,3 +82,9 @@ const LearnerSubmissions = [
   }
 ];
 
+// ================================
+// Helper Function
+// ================================
+function isValidNumber(value) {
+  return typeof value === "number" && !isNaN(value);
+}
