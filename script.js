@@ -102,7 +102,12 @@ function getLearnerData(course, ag, submissions) {
     } else {
       console.log("Validation passed");
     }
+    const result = [];
+    const learners = {};
+    const assignmentMap = {};
 
+    const now = new Date();
+    let hasValidData = false; // boolean requirement
 
 
   } catch (error) {
