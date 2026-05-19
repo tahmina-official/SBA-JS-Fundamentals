@@ -132,6 +132,14 @@ function getLearnerData(course, ag, submissions) {
         hasValidData = true;
       }
 
+      const dueDate = new Date(assignment.due_at);
+
+      // skip future assignments
+      if (dueDate > now) {
+        continue;
+      }
+    }
+
   } catch (error) {
     console.log("Error:", error.message);
     return [];
