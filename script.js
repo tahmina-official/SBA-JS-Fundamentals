@@ -88,3 +88,25 @@ const LearnerSubmissions = [
 function isValidNumber(value) {
   return typeof value === "number" && !isNaN(value);
 }
+
+// ================================
+// MAIN FUNCTION
+// ================================
+function getLearnerData(course, ag, submissions) {
+  try {
+    // ----------------------------
+    // IF / ELSE validation (REQ)
+    // ----------------------------
+    if (course.id !== ag.course_id) {
+      throw new Error("Course mismatch with Assignment Group");
+    } else {
+      console.log("Validation passed");
+    }
+
+
+
+  } catch (error) {
+    console.log("Error:", error.message);
+    return [];
+  }
+}
