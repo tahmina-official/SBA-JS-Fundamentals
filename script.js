@@ -175,6 +175,28 @@ function getLearnerData(course, ag, submissions) {
 
     }
 
+     // ================================
+    // LOOP TYPE 3: for...in (REQ second loop type)
+    // ================================
+    for (let id in learners) {
+      const learner = learners[id];
+
+      learner.avg =
+        learner.totalPoints === 0
+          ? 0
+          : +(learner.totalScore / learner.totalPoints).toFixed(3);
+
+      delete learner.totalScore;
+      delete learner.totalPoints;
+
+      result.push(learner);
+
+      // LOOP CONTROL KEYWORD (break requirement)
+      if (result.length > 1000) {
+        break;
+      }
+    }
+
   } catch (error) {
     console.log("Error:", error.message);
     return [];
