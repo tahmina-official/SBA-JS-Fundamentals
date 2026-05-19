@@ -109,6 +109,17 @@ function getLearnerData(course, ag, submissions) {
     const now = new Date();
     let hasValidData = false; // boolean requirement
 
+    // ================================
+    // LOOP TYPE 1: for...of (assignments)
+    // ================================
+    for (let assignment of ag.assignments) {
+      if (!isValidNumber(assignment.points_possible) || assignment.points_possible <= 0) {
+        throw new Error(`Invalid points_possible for assignment ${assignment.id}`);
+      }
+
+      assignmentMap[assignment.id] = assignment;
+    }
+
 
   } catch (error) {
     console.log("Error:", error.message);
