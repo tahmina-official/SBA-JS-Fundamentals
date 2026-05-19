@@ -157,6 +157,16 @@ function getLearnerData(course, ag, submissions) {
       }
 
       score = Math.max(0, score);
+
+            // create learner object if missing
+      if (!learners[learnerId]) {
+        learners[learnerId] = {
+          id: learnerId,
+          totalScore: 0,
+          totalPoints: 0
+        };
+      }
+
     }
 
   } catch (error) {
