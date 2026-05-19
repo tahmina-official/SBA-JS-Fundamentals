@@ -138,6 +138,16 @@ function getLearnerData(course, ag, submissions) {
       if (dueDate > now) {
         continue;
       }
+
+      const learnerId = sub.learner_id;
+      let score = sub.submission.score;
+
+      // validation
+      if (!isValidNumber(score)) {
+        throw new Error(`Invalid score for learner ${learnerId}`);
+      }
+
+      const submittedAt = new Date(sub.submission.submitted_at);
     }
 
   } catch (error) {
