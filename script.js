@@ -148,6 +148,15 @@ function getLearnerData(course, ag, submissions) {
       }
 
       const submittedAt = new Date(sub.submission.submitted_at);
+
+      // late penalty
+      if (submittedAt > dueDate) {
+        score -= assignment.points_possible * 0.1;
+      } else {
+        score = score;
+      }
+
+      score = Math.max(0, score);
     }
 
   } catch (error) {
