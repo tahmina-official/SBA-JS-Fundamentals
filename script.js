@@ -166,7 +166,7 @@ function getLearnerData(course, ag, submissions) {
           totalPoints: 0
         };
       }
-      
+
       learners[learnerId][assignment.id] =
         +(score / assignment.points_possible).toFixed(3);
 
@@ -175,7 +175,7 @@ function getLearnerData(course, ag, submissions) {
 
     }
 
-     // ================================
+    // ================================
     // LOOP TYPE 3: for...in (REQ second loop type)
     // ================================
     for (let id in learners) {
@@ -197,8 +197,22 @@ function getLearnerData(course, ag, submissions) {
       }
     }
 
+    // final safety boolean usage
+    if (!hasValidData) {
+      console.log("No valid submissions processed.");
+    }
+
+    return result;
+
   } catch (error) {
     console.log("Error:", error.message);
     return [];
   }
 }
+
+// ================================
+// RUN
+// ================================
+const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+
+console.log(result);
